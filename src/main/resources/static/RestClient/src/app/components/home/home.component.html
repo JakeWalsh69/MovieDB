@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="src/img/favicon.png">
+
+    <title>Movie Database Web Application</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="src/favicon.ico">
+</head>
+
+<body>
+        <nav class="main-navigation navbar-fixed-top">
+            <div class="navbar-header" style="border-right: .10em solid black; margin-top: 1em">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
+                        <button class="btn btn-default" style="margin-top: 1em; margin-right: 3em; margin-left: 5em"><a href="index.html"><b style="color: black; font-size: 1.5em">Home</b></a></button>
+                    </div>
+                <ul class="nav navbar-nav navbar-left">
+                    <li style="border-right: .10em solid black; padding-right: 3em; margin-top: 1em; margin-left: 3em">
+                            <div class="dropdown" style="padding-bottom:1em">
+                        <button class="btn btn-success" style="margin-top: 1em;" (click)="mostPopularMovies()"><b style="color: black; font-size: 1.5em">Most Popular Movies</b></button>
+                        <div class="dropdown-content" style="float:right">
+                                <a href="#" (click)="mostPopularMoviesInEnglish()" style="font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">English</a>
+                                <a href="#" (click)="mostPopularMoviesInFrench()" style="font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">French</a>
+                                <a href="#" (click)="mostPopularMoviesInGerman()" style="font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">German</a>
+                                <a href="#" (click)="mostPopularMoviesInSpanish()" style="font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">Spanish</a>
+                                <a href="#" (click)="mostPopularMoviesInItalian()" style="font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">Italian</a>
+                                </div>
+                            </div>
+                            <div class="dropdown" style="padding-bottom:1em; width: 30em; margin-left:.1em">
+                              <button class="btn btn-danger"style="margin-top: 1em;"><b style="color: black; font-size: 1.5em">Advanced Search</b></button>
+                              <div class="dropdown-content" style="border: .10em solid black; width: 30em">
+                                  <li style="padding-bottom: 2em; border-bottom: .10em solid black">
+                                      <p style="text-align: center; margin-top: .5em; text-decoration: underline; font-size: 1.25em; font-family:Arial, Helvetica, sans-serif"><b>Search By Name</b></p>
+                                      <input type="fname" [(ngModel)]="fname" style="float: left; margin-top:1em; margin-left: .5em; width:5em; display: inline-block; width:25%" placeholder="First name..">
+                                      <input type="lname" [(ngModel)]="lname" style="float: left; margin-top:1em; margin-left: .5em; width:5em; display: inline-block; width:25%" placeholder="Surname..">
+                                      <a href="#searchByNameTable" id="searchName"><button href="#searchByNameTable" class="btn btn-default" style="margin-left: 1em; display: inline-block; width: 40%; float: right; font-size: .8em; background-color: lightblue; font-family:Arial, Helvetica, sans-serif" (click)="searchByGenreAction(); searchByName()">Search By Name</button></a>   
+
+                                      <p style="text-align: center; margin-top: 2em; text-decoration: underline; font-size: 1.25em; font-family:Arial, Helvetica, sans-serif"><b>Search By Genre</b></p>
+                                    <li style="float: left; display:inline-block; border-bottom: .10em solid black; width:9.9em; border: .10em solid black;">
+                                        <a class="button-one" title="Action" href="#searchByGenreTable" (click)="searchByGenreAction()">Action</a>
+                                        <a class="button-two" title="Adventure" href="#searchByGenreTable" (click)="searchByGenreAdventure()">Adventure</a>
+                                        <a class="button-three" title="Animation" href="#searchByGenreTable" (click)="searchByGenreAnimation()">Animation</a>
+                                        <a class="button-four" title="Comedy" href="#searchByGenreTable" (click)="searchByGenreComedy()">Comedy</a>
+                                        <a class="button-five" title="Crime" href="#searchByGenreTable" (click)="searchByGenreCrime()">Crime</a>
+                                        <a class="button-six" title="Drama" href="#searchByGenreTable" (click)="searchByGenreDrama()">Drama</a>
+                                    </li>
+                                    <li style="float: left; display:inline-block; border-bottom: .10em solid black; width:9.9em; border: .10em solid black">
+                                        <a class="button-six" title="Family" href="#searchByGenreTable" (click)="searchByGenreFamily()">Family</a>
+                                        <a class="button-five" title="Fantasy" href="#searchByGenreTable" (click)="searchByGenreFantasy()">Fantasy</a>
+                                        <a class="button-four" title="History" href="#searchByGenreTable" (click)="searchByGenreHistory()">History</a>
+                                        <a class="button-three" title="Horror" href="#searchByGenreTable" (click)="searchByGenreHorror()">Horror</a>
+                                        <a class="button-two" title="Music" href="#searchByGenreTable" (click)="searchByGenreMusic()">Music</a>
+                                        <a class="button-one" title="Mystery" href="#searchByGenreTable" (click)="searchByGenreMystery()">Mystery</a>
+                                    </li>
+                                    <li style="float: left; display:inline-block; border-bottom: .10em solid black; width:9.9em; border: .10em solid black">
+                                        <a class="button-one" title="Romance" href="#searchByGenreTable" (click)="searchByGenreRomance()">Romance</a>
+                                        <a class="button-two" title="Sci-Fi" href="#searchByGenreTable" (click)="searchByGenreScienceFiction()">Sci-Fi</a>
+                                        <a class="button-three" title="TV Movie" href="#searchByGenreTable" (click)="searchByGenreTVMovie()">TV Movie</a>
+                                        <a class="button-four" title="Thriller" href="#searchByGenreTable" (click)="searchByGenreThriller()">Thriller</a>
+                                        <a class="button-five" title="War" href="#searchByGenreTable" (click)="searchByGenreWar()">War</a>
+                                        <a class="button-six" title="Western" href="#searchByGenreTable" (click)="searchByGenreWestern()">Western</a>
+                                        </li>
+                            </div>
+                    </div>
+                    <button class="btn btn-info" style="margin-top: 1em; margin-right: 10em; width: 8em; "><a href="src/app/login.html"><b style="color: black; font-size: 1.5em">Login</b></a></button>
+                    <button class="btn btn-warning" style="margin-top: 1em; margin-right: 8em"><a href="src/app/signup.html"><b style="color: black; font-size: 1.5em">Sign Up</b></a></button>
+                    <button class="btn btn-basic" style="margin-top: 1em; background-color: turquoise; margin-right: 8em"><a href="src/app/createList.html"><b style="color: black; font-size: 1.5em">Create a List</b></a></button>
+                    <button class="btn btn-basic" style="margin-top: 1em; background-color: lightsalmon; margin-right: 8em"><a href="/listUser"><b style="color: black; font-size: 1.5em">View User Data</b></a></button>
+                    <button class="btn btn-basic" style="margin-top: 1em; margin-left: 3em; margin-right: 1em; background-color: palevioletred; margin-right: 7.5em"><a href="src/app/review.html; font-size: 1.5em"><b style="color: black; font-size: 1.5em">Make Review</b></a></button>
+                    </li>
+                    
+                </ul>
+            
+            
+        </nav>
+<br><br>
+
+<div id="mostPopularAndKeywordTables">
+    <h2 class="intro"><b style="background-color: white; padding:.25em; border:.10em solid black; font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">Welcome to the Walsh Movie Database</b><br><br>
+    <b style="background-color: white; padding:.25em; border:.10em solid black; font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">Search for your favourite Movies and TV Shows here!</b></h2>
+
+    <h2 style="background-color: white; border:.10em solid black; text-align:center; padding-bottom: 1em; padding-top: .5em">
+      <input type="keyword" [(ngModel)]="keyword" style="width:7em; float:left; display: inline-block; margin-top: .5em; margin-left: 1em" placeholder="Search..">
+        <button class="btn btn-success" style="float:left; display: inline-block; width:7em; padding-bottom: .75em; margin-top: 1.15em;" (click)="searchByKeywordInEnglish()">Search</button>
+        <div class="dropdown-content" style="margin-top: 1.75em">
+                <a href="#" style="font-size: .5em" (click)="searchByKeywordInEnglish()">English</a>
+                <a href="#" style="font-size: .5em" (click)="searchByKeywordInFrench()">French</a>
+                <a href="#" style="font-size: .5em" (click)="searchByKeywordInGerman()">German</a>
+                <a href="#" style="font-size: .5em" (click)="searchByKeywordInSpanish()">Spanish</a>
+                <a href="#" style="font-size: .5em" (click)="searchByKeywordInItalian()">Italian</a>
+            </div>
+        
+        <b style="margin-left: 3.5em; padding: 5em">Take a look at the Popular Movies we have found for You!</b>
+        </h2>
+<table style="width: 100%; display: inline-block">
+  <tr>
+    <th class="title" style="font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">Movie Title</th>
+    <th class="genericData" style="font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">Description</th>
+    <th class="description" style="font-size: 1.25em; font-family:Arial, Helvetica, sans-serif">Release Date</th>
+  </tr>
+
+  <tr class="resultsTable" ng-repeat="movie in movies">
+    <td class="dataFont" *ngIf="data"><b>{{data.results[0].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[0].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{data.results[0].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{data.results[0].release_date}}</td>
+  </tr>
+
+  <tr class="resultsTable" ng-repeat="movie in movies">
+    <td class="dataFont" *ngIf="data"><b>{{data.results[1].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[1].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{data.results[1].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{data.results[1].release_date}}</td>
+</tr>
+
+<tr class="resultsTable" ng-repeat="movie in movies">
+    <td class="dataFont" *ngIf="data"><b>{{data.results[2].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[2].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{data.results[2].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{data.results[2].release_date}}</td>
+  </tr>
+
+  <tr class="resultsTable" ng-repeat="movie in movies">
+    <td class="dataFont" *ngIf="data"><b>{{data.results[3].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[3].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{data.results[3].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{data.results[3].release_date}}</td>
+    </tr>
+
+    <tr class="resultsTable" ng-repeat="movie in movies">
+        <td class="dataFont" *ngIf="data"><b>{{data.results[4].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[4].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+        <td class="dataFont" *ngIf="data">{{data.results[4].overview}}</td>
+        <td class="dataFont" *ngIf="data">{{data.results[4].release_date}}</td>
+  </tr>
+
+  <tr class="resultsTable" ng-repeat="movie in movies">
+      <td class="dataFont" *ngIf="data"><b>{{data.results[5].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[5].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{data.results[5].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{data.results[5].release_date}}</td>
+    </tr>
+
+    <tr class="resultsTable" ng-repeat="movie in movies">
+        <td class="dataFont" *ngIf="data"><b>{{data.results[6].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[6].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{data.results[6].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{data.results[6].release_date}}</td>
+      </tr>
+
+      <tr class="resultsTable" ng-repeat="movie in movies">
+          <td class="dataFont" *ngIf="data"><b>{{data.results[7].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[7].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{data.results[7].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{data.results[7].release_date}}</td>
+        </tr>
+
+        <tr class="resultsTable" ng-repeat="movie in movies">
+            <td class="dataFont" *ngIf="data"><b>{{data.results[8].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[8].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{data.results[8].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{data.results[8].release_date}}</td>
+          </tr>
+
+          <tr class="resultsTable" ng-repeat="movie in movies">
+              <td class="dataFont" *ngIf="data"><b>{{data.results[9].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{data.results[9].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{data.results[9].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{data.results[9].release_date}}</td>
+            </tr>
+</table>
+</div>
+
+<br><br>
+
+<div id="searchByGenre" style="padding-bottom: 20em">
+    <h2 style="background-color: white; padding:.25em; border:.10em solid black; text-align: center; font-family:Arial, Helvetica, sans-serif"><b>Filter your search based on Genre!</b></h2>
+<table style="width: 100%; display: inline-block">
+    <tr id="searchByGenreTable">
+          <th class="title">Movie Title</th>
+          <th class="genericData">Description</th>
+          <th class="description">Release Date</th>
+        </tr>
+  
+     <tr class="genreResultsTable">
+         {{genres.results[0].poster_path}}
+      <td class="dataFont" *ngIf="data"><b>{{genre.results[0].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[0].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+      <td class="dataFont" *ngIf="data">{{genre.results[0].overview}}</td>
+      <td class="dataFont" *ngIf="data">{{genre.results[0].release_date}}</td>
+  </tr>
+  
+  <tr class="genreResultsTable">
+      <td class="dataFont" *ngIf="data"><b>{{genre.results[1].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[1].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+      <td class="dataFont" *ngIf="data">{{genre.results[1].overview}}</td>
+      <td class="dataFont" *ngIf="data">{{genre.results[1].release_date}}</td>
+  </tr>
+  
+  <tr class="genreResultsTable">
+      <td class="dataFont" *ngIf="data"><b>{{genre.results[2].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[2].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+      <td class="dataFont" *ngIf="data">{{genre.results[2].overview}}</td>
+      <td class="dataFont" *ngIf="data">{{genre.results[2].release_date}}</td>
+  </tr>
+
+  <tr class="genreResultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{genre.results[3].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[3].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{genre.results[3].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{genre.results[3].release_date}}</td>
+</tr>
+
+<tr class="genreResultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{genre.results[4].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[4].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{genre.results[4].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{genre.results[4].release_date}}</td>
+</tr>
+
+<tr class="genreResultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{genre.results[5].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[5].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{genre.results[5].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{genre.results[5].release_date}}</td>
+</tr>
+
+<tr class="genreResultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{genre.results[6].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[6].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{genre.results[6].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{genre.results[6].release_date}}</td>
+</tr>
+
+<tr class="genreResultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{genre.results[7].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[7].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{genre.results[7].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{genre.results[7].release_date}}</td>
+</tr>
+
+<tr class="genreResultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{genre.results[8].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[8].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{genre.results[8].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{genre.results[8].release_date}}</td>
+</tr>
+
+<tr class="genreResultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{genre.results[9].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{genre.results[9].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{genre.results[9].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{genre.results[9].release_date}}</td>
+</tr>
+  
+  </table>
+  </div>
+
+<div id="searchByname" style="padding-bottom: 5em; border-bottom: .2em solid black">
+    <h2 style="background-color: white; padding:.25em; border:.10em solid black"><b>Search for your favourite Actor!</b></h2>
+<table style="width: 100%; display: inline-block; border:.10em solid black">
+  <tr>
+    <th class="" style="text-align: center">Actor Details</th>
+    <th class="moviesData" style="text-align: center">Movies</th>
+  </tr>
+
+  <tr class="resultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{fullname.results[0].name}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{fullname.results[0].profile_path}}" style="border:.10em solid black; margin-top: 1em"><br><br>
+    Popularity: {{fullname.results[0].popularity}}<br>
+    Actor ID: {{fullname.results[0].id}}</td>
+    <div class="rows" style="width:114.3em">
+            <div class="column" style="margin-left:.5em; margin-top: 5em">
+                <td class="" *ngIf="data"><img src="https://image.tmdb.org/t/p/w185/{{fullname.results[0].known_for[0].poster_path}}">
+            </td>
+        </div>
+        <div class="column" style="margin-top: 5em">
+                <td class="" *ngIf="data"><img src="https://image.tmdb.org/t/p/w185/{{fullname.results[0].known_for[1].poster_path}}">
+            </td>
+        </div>
+        <div class="column" style="margin-top: 5em">
+                <td class="" *ngIf="data"><img src="https://image.tmdb.org/t/p/w185/{{fullname.results[0].known_for[2].poster_path}}">
+            </td>
+        </div>
+        </div>
+    </tr>
+</table>
+
+<table style="width: 100%; display: inline-block">
+  <tr id="searchByNameTable">
+        <th class="title">Movie Title</th>
+        <th class="genericData">Description</th>
+        <th class="description">Release Date</th>
+      </tr>
+
+   <tr class="resultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{fullname.results[0].known_for[0].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{fullname.results[0].known_for[0].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{fullname.results[0].known_for[0].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{fullname.results[0].known_for[0].release_date}}</td>
+</tr>
+
+<tr class="resultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{fullname.results[0].known_for[1].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{fullname.results[0].known_for[1].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{fullname.results[0].known_for[1].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{fullname.results[0].known_for[1].release_date}}</td>
+</tr>
+
+<tr class="resultsTable">
+    <td class="dataFont" *ngIf="data"><b>{{fullname.results[0].known_for[2].title}}</b><br> <img src="https://image.tmdb.org/t/p/w185/{{fullname.results[0].known_for[2].poster_path}}" style="border:.10em solid black; margin-top: 1em"></td>
+    <td class="dataFont" *ngIf="data">{{fullname.results[0].known_for[2].overview}}</td>
+    <td class="dataFont" *ngIf="data">{{fullname.results[0].known_for[2].release_date}}</td>
+</tr>
+
+</table>
+</div>
+
+  <script src="node_modules\bootstrap\js\dist\collapse.js"></script>
+  <script src="node_modules\bootstrap\js\src\dropdown.js"></script>
+  <script src="node_modules\bootstrap\dist\js\bootstrap.js"></script>
+  <script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
+
+</body>
+
+</html>
