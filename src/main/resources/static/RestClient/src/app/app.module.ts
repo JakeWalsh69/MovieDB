@@ -10,11 +10,15 @@ import { ListuserComponent } from './components/listuser/listuser.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserService } from './shared_service/user.service';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { NeedAuthGuard } from './need-auth.guard';
 
 const appRoutes:Routes=[
   {path:"listUser", component:ListuserComponent},
   {path:"userForm", component:UserFormComponent},
-  {path:"", component:HomeComponent},
+  {path:"home", component:HomeComponent},
+  {path:"login", component:LoginComponent},
+  {path:"", component:AppComponent}
 ];
 
 @NgModule({
@@ -23,6 +27,7 @@ const appRoutes:Routes=[
     ListuserComponent,
     UserFormComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
