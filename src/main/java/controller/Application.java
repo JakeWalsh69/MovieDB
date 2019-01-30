@@ -44,11 +44,5 @@ public class Application implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        User testUser = new User("Jake", "password");
-        userRepository.save(testUser);
-        User testUser2 = new User("Jim", "jordan69");
-        userRepository.save(testUser2);
-        User testUser3 = new User("Deco", "rleague21");
-        userRepository.save(testUser3);
     }
 }

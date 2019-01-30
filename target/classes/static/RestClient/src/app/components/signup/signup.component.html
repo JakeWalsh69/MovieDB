@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="src/favicon.ico">
+
+    <title>Movie Database Web Application</title>
+    <base href="/">
+    <!-- <link href="../css/app.component.css" rel="stylesheet"> -->
+</head>
+<body>
+    <section id="welcome">
+    <h1 class="welcomeTitle"><b>Walsh Movie Database</b></h1>
+
+    <div class="container" style="margin:auto;width: 450px;">
+        <h2 class="card-title" id="loginTitle"><b>Sign Up</b></h2>
+        <div class="loginForm">
+        <form (ngSubmit)="processForm()">
+            <div class="form group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Username" [(ngModel)]="user.username">
+            </div>
+            <br>
+            <div class="form group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="user.password">
+            </div>
+            <br>
+            <input type="submit" value="Sign Up" class="btn btn-success">
+            <br><br>
+          <div *ngIf="isValid == false"><span style="display: inline-block; border: .10em solid black; background-color: white; padding: .5em"><h4 style="color: red">Username Already Taken</h4></span></div>
+          <div *ngIf="lengthValid == false"><span style="display: inline-block; border: .10em solid black; background-color: white; padding: .5em"><h4 style="color: red">Username must be between 4 and 15 characters</h4></span></div>
+        </form>
+    </div>
+    </div>
+
+    <br>
+    <div class="container" style="margin:auto;width: 450px; margin-top: 1em;">
+            <a routerLink="/"><button class="btn-warning"><h2><b>Return to Home</b></h2></button></a>
+            
+        </div>
+    </section>
+    </body>
+</html>

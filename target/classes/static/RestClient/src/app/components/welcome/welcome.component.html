@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="src/favicon.ico">
+
+    <title>Movie Database Web Application</title>
+    <base href="/">
+    <!-- <link href="../css/app.component.css" rel="stylesheet"> -->
+</head>
+<body>
+    <section id="welcome">
+      <h1 class="welcomeTitle"><b>Walsh Movie Database</b></h1>
+      <div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-4" style="margin-top: 20em">
+          <div class="panel-group">
+            <div class="panel panel-default" style="background-color:#032685">
+              <div class="panel-heading" id="loginPanel"><h2 class="contactTitle"><b>Login</b></h2></div>
+              <div class="panel-body" style="background-color: #032685; height: 22.5em">
+                  <a routerLink="/login"><img src="src/img/loginGif.gif" class="contactImg" alt="Login GIF" style="width: 80%;"></a>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-4" style="margin-top: 20em">
+          <div class="panel-group">
+            <div class="panel panel-default" style="background-color:#032685">
+              <div class="panel-heading" id="loginPanel"><h2 class="contactTitle"><b>Sign Up</b></h2></div>
+              <div class="panel-body" style="background-color: #1f9b06; height: 22.5em">
+                  <a routerLink="/signup"><img src="src/img/signUp.gif" class="signUpImg" alt="Sign Up GIF" style="width: 80%;"></a>
+              </div>
+            </div>
+        </div>
+      </div>
+      </div>
+    </section>
+    
+</body>
+</html>
+<router-outlet></router-outlet>

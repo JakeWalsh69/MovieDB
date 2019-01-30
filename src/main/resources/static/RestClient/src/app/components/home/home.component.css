@@ -73,13 +73,19 @@ body {
   
   .title {
     font-family:Arial, Helvetica, sans-serif;
-    width: 50em;
+    width: 30em;
     text-align: center;
   }
   
   .genericData {
     font-family:Arial, Helvetica, sans-serif;
-    width: 70em;
+    width: 50em;
+    text-align: center;
+  }
+
+  .releaseDateColumn {
+    font-family:Arial, Helvetica, sans-serif;
+    width: 10em;
     text-align: center;
   }
   
@@ -94,7 +100,40 @@ body {
   .description {
     margin:1em;
     padding: 1em;
+    width:10em;
+  }
+
+  #mostPopularAndKeywordTables {
+    border-bottom: .4em solid black;
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding-bottom: 2em;
+    background-color: white;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+
+  #reviewsTable {
+    border-bottom: .2em solid black;
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding-bottom: 2em;
+    background-color: white;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+
+  .reviewTextField {
     width:30em;
+    text-align: center;
   }
   
   .my-button {
@@ -193,7 +232,7 @@ body {
     display: block;
   }
   
-  .dropdown-content a:hover {
+  .dropdown-content a:active {
     background-color: #ddd;
     text-decoration: underline;
   }
@@ -230,4 +269,15 @@ body {
     display: inline;
     padding-left:20em;
     width: 27.1em;
+  }
+
+  .loginForm {
+    border: .10em solid black;
+    padding: 1em;
+    background-color: gainsboro;
+  }
+
+  #loginPanel {
+    background-color: white;
+    border-bottom: .25em solid black;
   }

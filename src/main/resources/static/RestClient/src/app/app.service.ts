@@ -11,11 +11,4 @@ export class AppService {
   constructor(private http: HttpClient) {
 
   }
-
-  login(username: string, password: string): Observable<LoginComponent>{
-    return this.http.post<LoginComponent>('https://reqres.in/api/login', {
-      username: username,
-      password: password
-    });
-  }
 }

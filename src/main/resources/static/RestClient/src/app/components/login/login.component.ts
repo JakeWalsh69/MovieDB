@@ -15,6 +15,9 @@ export class LoginComponent {
   public users:User[];
   username:String = '';
   password:String = '';
+  isValid:boolean;
+  isAdmin:boolean;
+  accountExists:boolean;
 
   constructor(private _userService:UserService, private app: AppService, private customer: CustomerService, private router: Router) {
   }
@@ -29,21 +32,24 @@ export class LoginComponent {
   }
 
   tryLogin(username, password) {
-    this.app.login(
-      this.username = username,
-      this.password = password
-    )
-      .subscribe(
-        r => {
           for (var i = 0; i < this.users.length; i++){
-            if (this.username == this.users[i].username && this.password == this.users[i].password){
-              this.router.navigateByUrl('/home');
+            this.isAdmin = false;
+            this.isValid = false;
+            this.accountExists = false;
+            if (username == "admin" && password == "admin"){
+              this.isAdmin = true;
+              this.router.navigateByUrl('/admin');
+            }
+            if (this.isAdmin == false){
+              if (this.username == this.users[i].username){
+                this.accountExists = true;
+              }
+              if (this.password == this.users[i].password){
+                this.isValid = true;
+                this.router.navigateByUrl('/home');
+              }
             }
           }
-        },
-        r => {
-          alert(r.error.error);
-        });
   }
 
 }

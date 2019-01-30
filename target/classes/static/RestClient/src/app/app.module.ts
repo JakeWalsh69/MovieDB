@@ -12,13 +12,17 @@ import { UserService } from './shared_service/user.service';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NeedAuthGuard } from './need-auth.guard';
+import { ReviewService } from './shared_service/review.service';
+import { ReviewComponent } from './components/review/review.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { FavouriteComponent } from './components/favourite/favourite.component'
+import { FavouriteService } from './shared_service/favourite.service';
+import { QueryService } from './shared_service/query.service';
+import { QueryComponent } from './components/query/query.component';
 
 const appRoutes:Routes=[
-  {path:"listUser", component:ListuserComponent},
-  {path:"userForm", component:UserFormComponent},
-  {path:"home", component:HomeComponent},
-  {path:"login", component:LoginComponent},
-  {path:"", component:AppComponent}
+  {path: "admin", component:AdminComponent},
+  {path:"", component:HomeComponent},
 ];
 
 @NgModule({
@@ -28,6 +32,10 @@ const appRoutes:Routes=[
     UserFormComponent,
     HomeComponent,
     LoginComponent,
+    ReviewComponent,
+    AdminComponent,
+    FavouriteComponent,
+    QueryComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,7 @@ const appRoutes:Routes=[
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, ReviewService, FavouriteService, QueryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
